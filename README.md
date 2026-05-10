@@ -1,7 +1,5 @@
 # Blatt 02 – Git Branches, JUnit Basics und CI-Pipeline
 
-Repository:
-https://github.com/Yousef2806/prog2_ybel_catcafe
 
 ## Git-Spiel
 
