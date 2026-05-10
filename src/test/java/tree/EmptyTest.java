@@ -28,7 +28,9 @@ public class EmptyTest {
         assertThrows(UnsupportedOperationException.class, e::rightChild);
     }
 
-    /** The getter for the data object should throw an UnsupportedOperationException. */
+    /**
+     * The getter for the data object should throw an UnsupportedOperationException.
+     */
     @Test
     public void testGetData() {
         Tree<Dummy> e = new Empty<>();
@@ -36,7 +38,10 @@ public class EmptyTest {
         assertThrows(UnsupportedOperationException.class, e::data);
     }
 
-    /** The getter for the leftChild child should throw an UnsupportedOperationException. */
+    /**
+     * The getter for the leftChild child should throw an
+     * UnsupportedOperationException.
+     */
     @Test
     public void testGetLeftChild() {
         Tree<Dummy> e = new Empty<>();
@@ -44,7 +49,10 @@ public class EmptyTest {
         assertThrows(UnsupportedOperationException.class, e::leftChild);
     }
 
-    /** The getter for the leftChild child should throw an UnsupportedOperationException. */
+    /**
+     * The getter for the leftChild child should throw an
+     * UnsupportedOperationException.
+     */
     @Test
     public void testGetRightChild() {
         Tree<Dummy> e = new Empty<>();
@@ -98,25 +106,25 @@ public class EmptyTest {
         assertThrows(NullPointerException.class, () -> e.accept(null));
     }
 
-    /** When accepting a visitor we should call {@code visitor.InOrderVisitor.visit(node)}. */
+    /**
+     * When accepting a visitor we should call
+     * {@code visitor.InOrderVisitor.visit(node)}.
+     */
     @Test
     public void testAcceptVisitor() {
         Empty<Dummy> e = new Empty<>();
 
-        assertEquals(
-                "",
-                e.accept(
-                        new TreeVisitor<>() {
-                            @Override
-                            public String visit(Empty<Dummy> node) {
-                                return "";
-                            }
+        assertEquals("", e.accept(new TreeVisitor<>() {
+            @Override
+            public String visit(Empty<Dummy> node) {
+                return "";
+            }
 
-                            @Override
-                            public String visit(Node<Dummy> node) {
-                                return node.data().toString();
-                            }
-                        }));
+            @Override
+            public String visit(Node<Dummy> node) {
+                return node.data().toString();
+            }
+        }));
     }
 
     /** Iterating should not quite be possible. */
@@ -136,7 +144,8 @@ public class EmptyTest {
         Tree<Dummy> e = new Empty<>();
         int count = 0;
 
-        for (Dummy _d : e) ++count;
+        for (Dummy _d : e)
+            ++count;
 
         assertEquals(0, count);
     }

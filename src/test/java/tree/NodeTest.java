@@ -13,8 +13,10 @@ public class NodeTest {
     /**
      * Dummy class for parameterisation of the {@link Tree} class in test.
      *
-     * @param name dummy name
-     * @param number dummy number (used for comparison)
+     * @param name
+     *            dummy name
+     * @param number
+     *            dummy number (used for comparison)
      */
     private record Dummy(String name, int number) implements Comparable<Dummy> {
         @Override
@@ -31,25 +33,19 @@ public class NodeTest {
     /** Ctor should not allow {@code null} data. */
     @Test
     public void testNodeCtorDataNull() {
-        assertThrows(
-                NullPointerException.class,
-                () -> new Node<Dummy>(new Empty<>(), null, new Empty<>()));
+        assertThrows(NullPointerException.class, () -> new Node<Dummy>(new Empty<>(), null, new Empty<>()));
     }
 
     /** Ctor should not allow {@code null} left child. */
     @Test
     public void testNodeCtorLeftNull() {
-        assertThrows(
-                NullPointerException.class,
-                () -> new Node<>(null, new Dummy("wuppie", 3), new Empty<>()));
+        assertThrows(NullPointerException.class, () -> new Node<>(null, new Dummy("wuppie", 3), new Empty<>()));
     }
 
     /** Ctor should not allow {@code null} right child. */
     @Test
     public void testNodeCtorRigtNull() {
-        assertThrows(
-                NullPointerException.class,
-                () -> new Node<>(new Empty<>(), new Dummy("wuppie", 3), null));
+        assertThrows(NullPointerException.class, () -> new Node<>(new Empty<>(), new Dummy("wuppie", 3), null));
     }
 
     /** Ctor should create a single node. */
@@ -66,7 +62,10 @@ public class NodeTest {
         assertEquals(e, n.rightChild());
     }
 
-    /** The getter for the data object should return the stored reference to this data object. */
+    /**
+     * The getter for the data object should return the stored reference to this
+     * data object.
+     */
     @Test
     public void testGetData() {
         Dummy c1 = new Dummy("wuppie", 1);
@@ -78,7 +77,8 @@ public class NodeTest {
     }
 
     /**
-     * The getter for the leftChild child should return a reference to the node of the left child.
+     * The getter for the leftChild child should return a reference to the node of
+     * the left child.
      */
     @Test
     public void testGetEmptyLeftChild() {
@@ -91,7 +91,8 @@ public class NodeTest {
     }
 
     /**
-     * The getter for the leftChild child should return a reference to the node of the left child.
+     * The getter for the leftChild child should return a reference to the node of
+     * the left child.
      */
     @Test
     public void testGetLeftChild() {
@@ -107,7 +108,8 @@ public class NodeTest {
     }
 
     /**
-     * The getter for the rightChild child should return a reference to the node of the right child.
+     * The getter for the rightChild child should return a reference to the node of
+     * the right child.
      */
     @Test
     public void testGetEmptyRightChild() {
@@ -120,7 +122,8 @@ public class NodeTest {
     }
 
     /**
-     * The getter for the rightChild child should return a reference to the node of the right child.
+     * The getter for the rightChild child should return a reference to the node of
+     * the right child.
      */
     @Test
     public void testGetRightChild() {
@@ -183,7 +186,10 @@ public class NodeTest {
         assertEquals(1, n.size());
     }
 
-    /** Adding new data to a single {@link Node} should add a new child (here: leftChild child). */
+    /**
+     * Adding new data to a single {@link Node} should add a new child (here:
+     * leftChild child).
+     */
     @Test
     public void testAddDataEmptyLeft() {
         Dummy c1 = new Dummy("wuppie", 3);
@@ -205,7 +211,10 @@ public class NodeTest {
         assertTrue(n.leftChild().rightChild().isEmpty());
     }
 
-    /** Adding new data to a single {@link Node} should add a new child (here: rightChild child). */
+    /**
+     * Adding new data to a single {@link Node} should add a new child (here:
+     * rightChild child).
+     */
     @Test
     public void testAddDataEmptyRight() {
         Dummy c1 = new Dummy("wuppie", 3);
@@ -275,7 +284,10 @@ public class NodeTest {
         assertTrue(n.rightChild().rightChild().isEmpty());
     }
 
-    /** Adding new data to a tree should add a new {@link Node} to the tree (recursive case). */
+    /**
+     * Adding new data to a tree should add a new {@link Node} to the tree
+     * (recursive case).
+     */
     @Test
     public void testAddDataEmptyLL() {
         Dummy c1 = new Dummy("wuppie", 3);
@@ -303,7 +315,10 @@ public class NodeTest {
         assertTrue(n.leftChild().leftChild().rightChild().isEmpty());
     }
 
-    /** Adding new data to a tree should add a new {@link Node} to the tree (recursive case). */
+    /**
+     * Adding new data to a tree should add a new {@link Node} to the tree
+     * (recursive case).
+     */
     @Test
     public void testAddDataEmptyLR() {
         Dummy c1 = new Dummy("wuppie", 3);
@@ -331,7 +346,10 @@ public class NodeTest {
         assertTrue(n.leftChild().rightChild().rightChild().isEmpty());
     }
 
-    /** Adding new data to a tree should add a new {@link Node} to the tree (recursive case). */
+    /**
+     * Adding new data to a tree should add a new {@link Node} to the tree
+     * (recursive case).
+     */
     @Test
     public void testAddDataEmptyRL() {
         Dummy c1 = new Dummy("wuppie", 1);
@@ -359,7 +377,10 @@ public class NodeTest {
         assertTrue(n.rightChild().leftChild().rightChild().isEmpty());
     }
 
-    /** Adding new data to a tree should add a new {@link Node} to the tree (recursive case). */
+    /**
+     * Adding new data to a tree should add a new {@link Node} to the tree
+     * (recursive case).
+     */
     @Test
     public void testAddDataEmptyRR() {
         Dummy c1 = new Dummy("wuppie", 1);
@@ -397,7 +418,10 @@ public class NodeTest {
         assertThrows(NullPointerException.class, () -> n.accept(null));
     }
 
-    /** When accepting a visitor we should call {@code visitor.InOrderVisitor.visit(node)}. */
+    /**
+     * When accepting a visitor we should call
+     * {@code visitor.InOrderVisitor.visit(node)}.
+     */
     @Test
     public void testAcceptVisitor() {
         Dummy c1 = new Dummy("wuppie", 1);
@@ -405,20 +429,17 @@ public class NodeTest {
         Node<Dummy> n = new Node<>(e, c1, e);
         // A(, )
 
-        assertEquals(
-                "wuppie",
-                n.accept(
-                        new TreeVisitor<>() {
-                            @Override
-                            public String visit(Empty<Dummy> node) {
-                                return "";
-                            }
+        assertEquals("wuppie", n.accept(new TreeVisitor<>() {
+            @Override
+            public String visit(Empty<Dummy> node) {
+                return "";
+            }
 
-                            @Override
-                            public String visit(Node<Dummy> node) {
-                                return node.data().toString();
-                            }
-                        }));
+            @Override
+            public String visit(Node<Dummy> node) {
+                return node.data().toString();
+            }
+        }));
     }
 
     /** Iterating should not quite be possible. */

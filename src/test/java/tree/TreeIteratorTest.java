@@ -12,8 +12,10 @@ public class TreeIteratorTest {
     /**
      * Dummy class for parameterisation of the {@link Tree} class in test.
      *
-     * @param name dummy name
-     * @param number dummy number (used for comparison)
+     * @param name
+     *            dummy name
+     * @param number
+     *            dummy number (used for comparison)
      */
     private record Dummy(String name, int number) implements Comparable<Dummy> {
         @Override
